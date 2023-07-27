@@ -1,0 +1,9 @@
+# Ignore all
+*
+*.exe
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
