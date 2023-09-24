@@ -2,8 +2,8 @@
 using namespace std;
 
 int main() {
-	 int size = 10000;
-    int max_value = 999999;
+	int size = 500;
+    int max_value = 32000;
 
     // Generate the array of random integers
     int random_integers[size];
