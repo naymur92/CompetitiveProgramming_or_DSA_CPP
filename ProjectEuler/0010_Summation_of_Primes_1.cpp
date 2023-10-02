@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(){
-	const unsigned int maxPrime = 1000000;
+	const unsigned int maxPrime = 2000000;
 	std::vector<unsigned int> primes;
 	primes.push_back(2);
 
