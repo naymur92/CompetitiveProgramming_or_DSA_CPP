@@ -12,7 +12,7 @@ Constraints:
 -106 ≤ A[i], B[i] ≤ 10^6
 */
 
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int found_size = 1e7 + 10;
