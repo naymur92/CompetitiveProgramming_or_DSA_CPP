@@ -27,7 +27,6 @@ Sum of N over all the test cases will be less than or equal to 10^6
 2 3
 
 
-
 *** in this solution not using prefix sum. but not pass the time constraints limit.
 */
 
