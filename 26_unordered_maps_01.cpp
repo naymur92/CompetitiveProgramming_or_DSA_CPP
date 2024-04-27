@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void print(map<string, string> &m){
+void print(unordered_map<int, string> &m){
 	cout << "Size: " << m.size() << endl;
 	for(auto &value: m)
 	{
@@ -10,10 +10,13 @@ void print(map<string, string> &m){
 }
 
 int main(){
-	map<string, string> m;
+	unordered_map<int, string> m;
 
-	m["avbe"] = "abcd";	// s.size() * O(log(n))
-	m["ewc"] = "bcde";
+	m[1] = "abcd";	// O(1)
+	m[6] = "bcde";
+	m[3] = "efgh";
+
+	m.insert({5, "ijkl"});
 
 	print(m);
 }

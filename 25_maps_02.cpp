@@ -4,7 +4,7 @@ using namespace std;
 int main(){
 	map<int, string> m;
 
-	m[1] = "abcd";	// O(lon(n))
+	m[1] = "abcd";	// O(log(n))
 	m[6] = "bcde";
 	m[3] = "efgh";
 

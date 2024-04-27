@@ -4,14 +4,14 @@ using namespace std;
 int main(){
 	map<int, string> m;
 
-	m[1] = "abcd";	// O(lon(n))
+	m[1] = "abcd";	// O(log(n))
 	m[6] = "bcde";
 	m[3] = "efgh";
 
 	m.insert({5, "ijkl"});
 	m[43];
 
-	auto it = m.find(4);	// O(lon(n))
+	auto it = m.find(4);	// O(log(n))
 	if(it == m.end()) {
 		cout << "No value found!" << endl;
 	} else {
