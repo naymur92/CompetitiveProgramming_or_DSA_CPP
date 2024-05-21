@@ -10,18 +10,22 @@ int main(){
 	int n, t;
 	cin >> n >> t;
 
-	unordered_set<long>possible_cells_to_visit;
-	possible_cells_to_visit.insert(1);
+	int A[n + 5];
+
 	for (int i = 1; i < n; ++i)
 	{
-		int a;
-		cin >> a;
-		possible_cells_to_visit.insert(i + a);
+		cin >> A[i];
 	}
 
-	auto it = possible_cells_to_visit.find(t);
-	if(it != possible_cells_to_visit.end()) cout << "YES" << endl;
-	else cout << "NO" << endl;
+	A[n] = 1;	// for skip loop error
+	for (int cur_house = 1; cur_house <= n; cur_house += A[cur_house])
+	{
+		if(cur_house == t){
+			puts("YES");
+			return 0;
+		}
+	}
+	puts("NO");
 }
 
 
