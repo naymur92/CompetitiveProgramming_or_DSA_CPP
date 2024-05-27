@@ -6,6 +6,15 @@ https://codeforces.com/problemset/problem/1473/B
 
 using namespace std;
 
+string generateString(string S, int times){
+	string new_s = "";
+	while(times--)
+	{
+		new_s += S;
+	}
+	return new_s;
+}
+
 int main(){
 	int q;
 	cin >> q;
@@ -14,30 +23,13 @@ int main(){
 		string s, t;
 		cin >> s >> t;
 
-		if((s[0] != t[0]) || (s[s.size() - 1] != t[t.size() - 1])) {
-			cout << -1 << endl;
-		} else {
-			string bg = s.size() >= t.size() ? s : t;
-			string sm = s.size() < t.size() ? s : t;
+		int s_s = s.size();
+		int t_s = t.size();
 
-			bool is_av_lcm = true;
-
-			for (int i = 0; i < bg.size(); ++i)
-			{
-				if(bg[i] != sm[i % sm.size()]) {
-					is_av_lcm = false;
-					break;
-				}
-			}
-			if (!is_av_lcm) {
-				cout << -1 << endl;
-			}
-			else {
-				// print lcm
-				int lcm = lcm(bg.size(), sm.size());
-				cout << lcm << endl
-			}
-		}
+		int lcm = (s_s * t_s) / __gcd(s_s, t_s);
+		
+		if(generateString(s, lcm / s_s) != generateString(t, lcm / t_s)) cout << -1 << endl;
+		else cout << generateString(s, lcm / s_s) << endl;
 	}
 }
 
