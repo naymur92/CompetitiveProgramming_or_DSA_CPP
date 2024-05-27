@@ -27,12 +27,26 @@ int main(){
 			a[0][0] = 1;
 			a[n - 1][n - 1] = n * n;
 
-			// cover max data less than n^2 in decreasing order from first corner
+			// cover half of first corner data less than n^2 in decreasing order from first corner
 			int x = n * n - 1;
-			for (int i = 0; i < n; ++i)
+			for (int i = 1; i < n; ++i)
 			{
-				/* code */
+				for (int j = i; j >= 0; --j, --x)
+				{
+					a[i - j][j] = x;
+				}
 			}
+
+			// cover half of last corner data less than n^2 / 2 in increasing order from last corner
+			x = 2;
+			for (int j = n - 2; j > 0; --j)
+			{
+				for (int i = 0; i < n - j; ++i, ++x)
+				{	
+					a[n - i - 1][j + i] = x;
+				}
+			}
+			
 
 			// print data
 			for (int i = 0; i < n; ++i)
