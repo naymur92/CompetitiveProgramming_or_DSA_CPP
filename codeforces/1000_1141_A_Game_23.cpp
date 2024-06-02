@@ -1,5 +1,5 @@
 /*
-https://codeforces.com/problemset/problem/1473/B
+https://codeforces.com/problemset/problem/1141/A
 */
 
 #include <bits/stdc++.h>
@@ -13,28 +13,29 @@ int main(){
 	cin >> n >> m;
 
 	ul div = m / n;
-	if(m % n != 0 || (div % 2 != 0 && div % 3 != 0))
-	{
+	if(m % n != 0)
+    {
 		cout << -1 << endl;
-	} else
-	{
-		ul moves = 0;
+    } else
+    {
+        ul moves = 0;
 
-		while(div > 1)
-		{
-			if(div % 2 == 0)
-			{
-				moves++;
-				div /= 2;
-			}
-			if(div % 3 == 0)
-			{
-				moves++;
-				div /= 3;
-			}
-		}
-		cout << moves << endl;
-	}
+        while(div % 2 == 0 || div % 3 == 0)
+        {
+            if(div % 2 == 0)
+            {
+                moves++;
+                div /= 2;
+            }
+            if(div % 3 == 0)
+            {
+                moves++;
+                div /= 3;
+            }
+        }
+        if(div == 1) cout << moves << endl;
+        else cout << -1 << endl;
+    }
 }
 
 
