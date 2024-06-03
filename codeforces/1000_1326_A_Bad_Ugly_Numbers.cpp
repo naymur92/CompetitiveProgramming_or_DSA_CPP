@@ -1,5 +1,5 @@
 /*
-https://codeforces.com/problemset/problem/1326/A
+https://codeforces.com/problemset/problem/118/B
 */
 
 #include <bits/stdc++.h>
@@ -7,37 +7,47 @@ https://codeforces.com/problemset/problem/1326/A
 using namespace std;
 
 int main(){
-	int t;
-	cin >> t;
-	while(t--)
+	int n;
+	cin >> n;
+
+	// print top half
+	for (int i = n; i >= -n; --i)
 	{
-		int n;
-		cin >> n;
-		if(n == 1) cout << -1 << endl;
-		else
+		int new_i = abs(i);
+
+		// print left spaces
+		int inner_loop = new_i;
+		while(inner_loop--)
 		{
-			string s = "2";
-			for (int i = 0; i < n - 1; ++i)
-			{
-				s += '3';
-			}
-			cout << s << endl;
+			cout << "  ";
 		}
+
+		// print left numbers
+		for (int j = 0; j <= n - new_i; ++j)
+		{
+			cout << j;
+			if(j < n - new_i) cout << " ";
+		}
+
+		// print right numbers
+		for (int j = n - new_i - 1; j >= 0; --j)
+		{
+			cout << " " << j;
+		}
+		cout << endl;
 	}
 }
 
 
 /*
-4
-1
 2
-3
-4
 */
 
 /*
--1
-57
-239
-6789
+    0
+  0 1 0
+0 1 2 1 0
+  0 1 0
+    0
+
 */
