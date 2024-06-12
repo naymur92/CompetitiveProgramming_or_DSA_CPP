@@ -14,23 +14,7 @@ int main(){
         int n;
         cin >> n;
 
-        int max_sum = 0;
-        int x;
-        for (int i = 2; i <= n; ++i)
-        {
-            int sum = 0;
-            for (int k = 1; k * i <= n; ++k)
-            {
-                sum = sum + k * i;
-            }
-            if (sum > max_sum)
-            {
-                max_sum = sum;
-                x = i;
-            }
-
-        }
-        cout << x << endl;
+        cout << (n == 3 ? 3 : 2) << endl;
     }
 }
 
