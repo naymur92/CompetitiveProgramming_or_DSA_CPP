@@ -2,12 +2,11 @@
 using namespace std;
 
 // comparator function for inbuilt sort function
-bool should_i_swap(pair<int, int> a, pair<int, int> b){
+bool cmp(pair<int, int> a, pair<int, int> b){
 	if(a.first != b.first){
 		return a.first < b.first;	// increasing order
-	} else{
-		return a.second > b.second;	// decreasing order
 	}
+	return a.second > b.second;	// decreasing order
 }
 
 int main(){
@@ -20,7 +19,7 @@ int main(){
 	}
 
 	// sort(a.begin(), a.end());
-	sort(a.begin(), a.end(), should_i_swap);
+	sort(a.begin(), a.end(), cmp);
 
 	for(auto &val: a) cout << val.first << " " << val.second << endl;
 }
