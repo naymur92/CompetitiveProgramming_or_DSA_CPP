@@ -20,6 +20,11 @@ int main(){
 	string num;
 	cin >> num;
 
+ if (num.size() == 1) {
+  cout << 0;
+  return 0;
+ }
+
 	unsigned long sum = 0;
 
 	for (int i = 0; i < num.size(); ++i)
