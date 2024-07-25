@@ -88,7 +88,8 @@ int main(){
 	for (int i = 0; i < n; ++i) {
 		long long num;
 		cin >> num;
-		numbers[i] = (int) num % 100000;
+		// numbers[i] = (int) num % 100000;
+		numbers[i] = (int) num;
 	}
 
 	// check original list is sorted
