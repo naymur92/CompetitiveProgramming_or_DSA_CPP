@@ -82,7 +82,7 @@ bool isSorted(vector<int> &numbers) {
 }
 
 int main(){
-	int n = 10000;	// change the size
+	int n = 1000000;	// change the size
 	vector<int> numbers(n);
 
 	for (int i = 0; i < n; ++i) {
