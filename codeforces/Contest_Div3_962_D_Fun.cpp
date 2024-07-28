@@ -16,22 +16,12 @@ int main(){
 
         int triples = 0;
 
-        int a = 1, b = 1, c = 1;
-
-        while((a*b + b*c + c*a) <= n && (a + b + c) <= x) {
-            while((a*b + b*c + c*a) <= n && (a + b + c) <= x) {
-                while((a*b + b*c + c*a) <= n && (a + b + c) <= x) {
-                    // cout << a << b << c << endl;
-                    triples++;
-                    c++;
-                }
-                b++;
-                c = 1;
+        for (int a = 1; a <= min(n, x); ++a) {
+            for (int b = 1; b <= min(n/a, x - a); ++b) {
+                int maxC = min(x - (a + b), (n - a*b) / (a + b));
+                triples += maxC;
             }
-            a++;
-            b = 1;
         }
-        // cout << endl;
         cout << triples << "\n";
     }
 }
