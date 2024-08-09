@@ -13,32 +13,20 @@ int main(){
         int n, s, m;
         cin >> n >> s >> m;
 
-        vector<int> time_slot(m, 1);
-
+        int k = 0;
+        bool is_possible = false;
         for (int i = 0; i < n; ++i)
         {
             int l, r;
             cin >> l >> r;
 
-            for (int j = l; j < r; ++j)
-            {
-                time_slot[j] = 0;
-            }
+            if (l - k >= s) is_possible = true;
+
+            k = r; 
         }
+        if (m - k >= s) is_possible = true;
 
-        // for (auto &mn: time_slot) cout << mn << " ";
-        // cout << "\n";
-
-        int free_time = 0;
-        for (int i = 0; i < m; ++i)
-        {
-            if (free_time == s) break;
-
-            if (time_slot[i]) free_time++;
-            else free_time = 0;
-        }
-
-        if (free_time == s) cout << "YES\n";
+        if (is_possible) cout << "YES\n";
         else cout << "NO\n";
     }
 }

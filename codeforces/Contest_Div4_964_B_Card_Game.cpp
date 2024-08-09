@@ -6,7 +6,13 @@ https://codeforces.com/contest/1999/problem/B
 
 using namespace std;
 
-int main(){
+int check(int a, int b) {
+    if (a > b) return 1;
+    else if (a == b) return 0;
+    else return -1;
+}
+
+int main() {
     int t;
     cin >> t;
     while (t--) {
@@ -21,17 +27,15 @@ int main(){
         }
 
 
-        int a_wins = 0, b_wins = 0;
+        int ans = 0;
 
         for (int i = 0; i < 2; ++i) {
             for (int j = 0; j < 2; ++j) {
-                if (suneet_cards[i] > slavic_cards[j]) a_wins++;
-                else b_wins++;
+                if (check(suneet_cards[i], slavic_cards[j]) + check(suneet_cards[1 - i], slavic_cards[1 - j]) > 0) ans++;
             }
         }
 
-        if (a_wins - b_wins > 0) cout << a_wins - b_wins << "\n";
-        else cout << 0 << "\n";
+        cout << ans << "\n";
     }
 }
 
