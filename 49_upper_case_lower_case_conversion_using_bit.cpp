@@ -26,13 +26,12 @@ int main() {
 
 	char a = 'a';
 	cout << char(a & (~(1 << 5))) << "\n";	// convert to uppercase
-
-	cout << char(1 << 5) << "\n";	// print space
-
-	cout << char('C' | ' ') << "\n";	// convert to lowercase
-
+	// cout << char(1 << 5) << "\n";	// print space
+	
+	printBinary(' ');
 	printBinary('_');
 
+	cout << char('C' | ' ') << "\n";	// convert to lowercase
 	cout << char('c' & '_') << "\n";	// convert to uppercase
 }
 
