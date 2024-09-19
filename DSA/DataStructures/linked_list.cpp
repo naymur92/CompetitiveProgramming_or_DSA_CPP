@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// declaration class
+// class declaration
 class Node
 {
 public:
