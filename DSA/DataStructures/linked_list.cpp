@@ -16,6 +16,9 @@ void insertAtBegenning(Node* &head, int data) {
 	tempNode->data = data;
 	tempNode->next = nullptr;
 
+	// link previous item
+	if (head != nullptr) tempNode->next = head;
+
 	head = tempNode;
 }
 
@@ -51,7 +54,20 @@ void insertAtNthPosition(Node* &head, int data, int n) {
 	}
 
 	auto temp = head;
-	for (int i = 0; i < n - 2; ++i) temp = temp->next;
+	for (int i = 0; i < n - 2; ++i) {
+		// check for invalid position
+		if (temp == nullptr) break;
+
+		temp = temp->next;
+	}
+
+	// check for invalid position
+	if (temp == nullptr) {
+		cout << "Invalid position: " << n << "!\n";
+		delete newNode;
+		return;
+	}
+
 	newNode->next = temp->next;
 	temp->next = newNode;
 }
@@ -82,6 +98,18 @@ void reverseLinkedList(Node* &head) {
 		current = next;
 	}
 	head = prev;
+}
+
+// reverse linked list using recursion
+void reverseLinkedListWithRecursion(Node* &head, Node *item) {
+	if (item == nullptr || item->next == nullptr) {
+		head = item;
+		return;
+	}
+	reverseLinkedListWithRecursion(head, item->next);
+
+	item->next->next = item;
+	item->next = nullptr;
 }
 
 // traverse Linked List
@@ -115,23 +143,24 @@ int main() {
 
 
 	// inserting first element
-	// insertAtBegenning(head, 22);
+	// insertAtBegenning(head, 2);
+	// insertAtBegenning(head, 4);
 
 	// inserting elements at the end
-	insertAtEnd(head, 2);
-	insertAtEnd(head, 4);
-	insertAtEnd(head, 6);
-	insertAtEnd(head, 8);
+	// insertAtEnd(head, 2);
+	// insertAtEnd(head, 4);
+	// insertAtEnd(head, 6);
+	// insertAtEnd(head, 8);
 
 	// inserting at n-th position
-	// insertAtNthPosition(head, 2, 1);	// 2
-	// insertAtNthPosition(head, 4, 2);	// 2 4
-	// insertAtNthPosition(head, 6, 1);	// 6 2 4
-	// insertAtNthPosition(head, 5, 2);	// 6 5 2 4
-	// insertAtNthPosition(head, 8, 3);	// 6 5 8 2 4
+	insertAtNthPosition(head, 2, 1);	// 2
+	insertAtNthPosition(head, 4, 2);	// 2 4
+	insertAtNthPosition(head, 6, 1);	// 6 2 4
+	insertAtNthPosition(head, 5, 2);	// 6 5 2 4
+	insertAtNthPosition(head, 8, 3);	// 6 5 8 2 4
 
 	// traverse
-	// traverseList(head);
+	traverseList(head);
 
 	// delete from n-th position
 	// deleteAtNthPosition(head, 3);	// 6 5 2 4
@@ -147,6 +176,9 @@ int main() {
 	// reversePrintListWithRecursion(head);	// 8 6 4 2
 
 	// reverse the list
-	reverseLinkedList(head);
-	traverseList(head);
+	// reverseLinkedList(head);
+
+	// reverse linked list using recursion
+	// reverseLinkedListWithRecursion(head, head);
+	// traverseList(head);
 }
