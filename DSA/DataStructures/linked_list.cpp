@@ -71,6 +71,19 @@ void deleteAtNthPosition(Node* &head, int n) {
 	delete temp1;
 }
 
+// reverse linked list
+void reverseLinkedList(Node* &head) {
+	Node *current = head, *prev = nullptr, *next = nullptr;
+
+	while (current != nullptr) {
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	head = prev;
+}
+
 // traverse Linked List
 void traverseList(Node* head) {
 	Node* temp = head;
@@ -79,6 +92,20 @@ void traverseList(Node* head) {
 		temp = temp->next;
 	}
 	cout << "\n";
+}
+
+void printListWithRecursion(Node* item) {
+	if (item == nullptr) return;
+
+	cout << item->data << " ";
+	printListWithRecursion(item->next);
+}
+
+void reversePrintListWithRecursion(Node* item) {
+	if (item == nullptr) return;
+
+	reversePrintListWithRecursion(item->next);
+	cout << item->data << " ";
 }
 
 int main() {
@@ -91,21 +118,35 @@ int main() {
 	// insertAtBegenning(head, 22);
 
 	// inserting elements at the end
-	// insertAtEnd(head, 2);
-	// insertAtEnd(head, 4);
-	// insertAtEnd(head, 6);
+	insertAtEnd(head, 2);
+	insertAtEnd(head, 4);
+	insertAtEnd(head, 6);
+	insertAtEnd(head, 8);
 
 	// inserting at n-th position
-	insertAtNthPosition(head, 2, 1);	// 2
-	insertAtNthPosition(head, 4, 2);	// 2 4
-	insertAtNthPosition(head, 6, 1);	// 6 2 4
-	insertAtNthPosition(head, 5, 2);	// 6 5 2 4
-	insertAtNthPosition(head, 8, 3);	// 6 5 8 2 4
+	// insertAtNthPosition(head, 2, 1);	// 2
+	// insertAtNthPosition(head, 4, 2);	// 2 4
+	// insertAtNthPosition(head, 6, 1);	// 6 2 4
+	// insertAtNthPosition(head, 5, 2);	// 6 5 2 4
+	// insertAtNthPosition(head, 8, 3);	// 6 5 8 2 4
 
 	// traverse
-	traverseList(head);
+	// traverseList(head);
 
-	deleteAtNthPosition(head, 3);	// 6 5 2 4
-	deleteAtNthPosition(head, 1);	// 5 2 4
+	// delete from n-th position
+	// deleteAtNthPosition(head, 3);	// 6 5 2 4
+	// deleteAtNthPosition(head, 1);	// 5 2 4
+	// traverseList(head);
+
+
+	// print with recursion
+	// printListWithRecursion(head);	// 2 4 6 8
+	// cout << "\n";
+
+	// reverse print with recursion
+	// reversePrintListWithRecursion(head);	// 8 6 4 2
+
+	// reverse the list
+	reverseLinkedList(head);
 	traverseList(head);
 }
