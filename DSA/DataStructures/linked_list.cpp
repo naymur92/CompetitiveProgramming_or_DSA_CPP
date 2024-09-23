@@ -81,7 +81,19 @@ void deleteAtNthPosition(Node* &head, int n) {
 		return;
 	}
 
-	for (int i = 0; i < n - 2; ++i) temp = temp->next;
+	for (int i = 0; i < n - 2; ++i) {
+		// check for invalid position
+		if (temp == nullptr || temp->next == nullptr) break;
+
+		temp = temp->next;
+	}
+
+	// check for invalid position
+	if (temp == nullptr || temp->next == nullptr) {
+		cout << "Invalid position: " << n << "!\n";
+		return;
+	}
+
 	auto temp1 = temp->next;
 	temp->next = temp1->next;
 	delete temp1;
@@ -160,7 +172,7 @@ int main() {
 	insertAtNthPosition(head, 8, 3);	// 6 5 8 2 4
 
 	// traverse
-	traverseList(head);
+	// traverseList(head);
 
 	// delete from n-th position
 	// deleteAtNthPosition(head, 3);	// 6 5 2 4
