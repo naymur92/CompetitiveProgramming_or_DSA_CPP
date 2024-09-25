@@ -11,7 +11,7 @@ public:
 };
 
 // insert first element
-void insertAtBegenning(Node* &head, int data) {
+void insertAtBeginning(Node* &head, int data) {
 	Node* tempNode = new Node();
 	tempNode->data = data;
 	tempNode->next = nullptr;
@@ -155,8 +155,8 @@ int main() {
 
 
 	// inserting first element
-	// insertAtBegenning(head, 2);
-	// insertAtBegenning(head, 4);
+	// insertAtBeginning(head, 2);
+	// insertAtBeginning(head, 4);
 
 	// inserting elements at the end
 	// insertAtEnd(head, 2);
