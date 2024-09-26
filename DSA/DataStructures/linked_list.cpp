@@ -14,10 +14,7 @@ public:
 void insertAtBeginning(Node* &head, int data) {
 	Node* tempNode = new Node();
 	tempNode->data = data;
-	tempNode->next = nullptr;
-
-	// link previous item
-	if (head != nullptr) tempNode->next = head;
+	tempNode->next = head;	// link previous item
 
 	head = tempNode;
 }
@@ -155,8 +152,8 @@ int main() {
 
 
 	// inserting first element
-	// insertAtBeginning(head, 2);
-	// insertAtBeginning(head, 4);
+	insertAtBeginning(head, 2);
+	insertAtBeginning(head, 4);
 
 	// inserting elements at the end
 	// insertAtEnd(head, 2);
@@ -165,14 +162,14 @@ int main() {
 	// insertAtEnd(head, 8);
 
 	// inserting at n-th position
-	insertAtNthPosition(head, 2, 1);	// 2
-	insertAtNthPosition(head, 4, 2);	// 2 4
-	insertAtNthPosition(head, 6, 1);	// 6 2 4
-	insertAtNthPosition(head, 5, 2);	// 6 5 2 4
-	insertAtNthPosition(head, 8, 3);	// 6 5 8 2 4
+	// insertAtNthPosition(head, 2, 1);	// 2
+	// insertAtNthPosition(head, 4, 2);	// 2 4
+	// insertAtNthPosition(head, 6, 1);	// 6 2 4
+	// insertAtNthPosition(head, 5, 2);	// 6 5 2 4
+	// insertAtNthPosition(head, 8, 3);	// 6 5 8 2 4
 
 	// traverse
-	// traverseList(head);
+	traverseList(head);
 
 	// delete from n-th position
 	// deleteAtNthPosition(head, 3);	// 6 5 2 4
