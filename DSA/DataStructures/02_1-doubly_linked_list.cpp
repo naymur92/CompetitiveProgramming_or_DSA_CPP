@@ -11,7 +11,7 @@ public:
 	Node* next;
 };
 
-struct Node* getNewNode(int x) {
+Node* getNewNode(int x) {
 	Node* newNode = new Node();
 
 	newNode->prev = nullptr;
@@ -19,18 +19,15 @@ struct Node* getNewNode(int x) {
 	newNode->data = x;
 
 	return newNode;
-};
+}
 
 // insert first element
 void insertAtBeginning(Node* &head, int data) {
 	auto tempNode = getNewNode(data);
-	
-	if (head == nullptr) {
-		head = tempNode;
-		return;
-	}
 
-	head->prev = tempNode;
+	if (head != nullptr)
+		head->prev = tempNode;
+
 	tempNode->next = head;
 	head = tempNode;
 }
@@ -39,37 +36,35 @@ void insertAtBeginning(Node* &head, int data) {
 void insertAtEnd(Node* &head, int data) {
 	auto newNode = getNewNode(data);
 
-	if (head == nullptr) head = newNode;
-	else {
-		auto temp1 = head;
-		while (temp1 != nullptr) {
-			if (temp1->next == nullptr) {
-				temp1->next = newNode;
-				newNode->prev = temp1;
-				break;
-			}
-			temp1 = temp1->next;
-		}
+	if (head == nullptr) {
+		head = newNode;
+		return;
 	}
+
+	auto temp = head;
+	while (temp->next != nullptr)
+		temp = temp->next;
+
+	temp->next = newNode;
+	newNode->prev = temp;
 }
 
 // insert a node at n-th position
 void insertAtNthPosition(Node* &head, int data, int n) {
 	auto newNode = getNewNode(data);
 
-	if (head == nullptr) {
-		head = newNode;
-		return;
-	}
-
 	if (n == 1) {
-		head->prev = newNode;
+		if (head != nullptr)
+			head->prev = newNode;
+
 		newNode->next = head;
 		head = newNode;
 		return;
 	}
 
 	auto temp = head;
+
+	// go at n - 1  position
 	for (int i = 0; i < n - 2; ++i) {
 		// check for invalid position
 		if (temp == nullptr) break;
@@ -101,37 +96,44 @@ void deleteAtNthPosition(Node* &head, int n) {
 	}
 
 	auto temp = head;
-	if (n == 1) {
-		head = temp->next;
-		if (head != nullptr)
-			head->prev = nullptr;
-		delete temp;	// free(temp);
-		return;
-	}
 
-	for (int i = 0; i < n - 2; ++i) {
+	// go to n-th item
+	for (int i = 1; i < n; ++i) {
 		// check for invalid position
-		if (temp == nullptr || temp->next == nullptr) break;
+		if (temp == nullptr) break;
 
 		temp = temp->next;
 	}
 
-	// check for invalid position
-	if (temp == nullptr || temp->next == nullptr) {
+	// print invalid position message
+	if (temp == nullptr) {
 		cout << "Invalid position: " << n << "!\n";
 		return;
 	}
 
-	auto temp1 = temp->next;
-	temp->next = temp1->next;
+	// checking for first item and change head
+	if (temp->prev == nullptr)
+		head = temp->next;
+
+	// change next link
+	if (temp->prev != nullptr)
+		temp->prev->next = temp->next;
+
+	// change prev link
 	if (temp->next != nullptr)
-		temp->next->prev = temp;
-	delete temp1;
+		temp->next->prev = temp->prev;
+
+	delete temp;
 }
 
 
 // traverse Doubly Linked List
 void printList(Node* head) {
+	if (head == nullptr) {
+		cout << "Invalid! List is empty!\n";
+		return;
+	}
+
 	Node* temp = head;
 	while (temp != nullptr) {
 		cout << temp->data << " ";
@@ -142,6 +144,11 @@ void printList(Node* head) {
 
 // reverse print Doubly Linked List with iteration
 void reversePrint(Node* head) {
+	if (head == nullptr) {
+		cout << "Invalid! List is empty!\n";
+		return;
+	}
+
 	Node* temp = head;
 
 	// get the last item
