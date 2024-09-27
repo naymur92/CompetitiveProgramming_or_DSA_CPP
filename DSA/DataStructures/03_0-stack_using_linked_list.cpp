@@ -2,44 +2,61 @@
 
 using namespace std;
 
+// class for Linked List
+class Node
+{
+public:
+	int data;
+	Node* next;
+
+	// constructor
+	Node(int val) {
+		data = val;
+		next = nullptr;
+	}
+};
+
+// class for stack
 class Stack
 {
 private:
-	int top;
-	int size;
-	int *stack;	// dynamic array
+	Node* top;
 
 public:
 	// constructor
-	Stack(int size) {
-		size = size;
-		stack = new int[size];
-		top = -1;
+	Stack() {
+		top = nullptr;
 	}
 
 	// destructor
 	~Stack() {
-		delete[] stack;
+		while (!isEmpty()) {
+			pop();
+		}
 	}
 
 	// method for push element in stack
 	void push(int val) {
-		if (isFull()) {
-			cout << "Stack overflow!\n";
-			return;
-		}
+		auto newNode = new Node(val);
 
-		stack[++top] = val;
+		newNode->next = top;
+		top = newNode;
 	}
 
 	// method for pop element from top of stack
 	int pop() {
 		if (isEmpty()) {
-			cout << "Stack is empty!\n";
+			cout << "Stack is Underflow!\n";
 			return -1;
 		}
 
-		return stack[top--];
+		auto temp = top;
+		int value = temp->data;
+		top = temp->next;
+
+		delete temp;
+
+		return value;
 	}
 
 	// Method for retrive top element
@@ -49,17 +66,12 @@ public:
 			return -1;
 		}
 
-		return stack[top];
+		return top->data;
 	}
 
 	// method for checking stack is empty
 	bool isEmpty() {
-		return top == -1;
-	}
-
-	// method for checking stack is full
-	bool isFull() {
-		return top == size - 1;
+		return top == nullptr;
 	}
 
 	// method for printing values
@@ -69,8 +81,10 @@ public:
 			return;
 		}
 		cout << "Stack elements: ";
-		for (int i = 0; i <= top; ++i) {
-			cout << stack[i] << " ";
+		auto temp = top;
+		while (temp != nullptr) {
+			cout << temp->data << " ";
+			temp = temp->next;
 		}
 		cout << "\n";
 	}
@@ -79,8 +93,8 @@ public:
 
 
 int main() {
-	// creating stack of size 10
-	Stack stack(10);
+	// creating stack of dynamic size
+	Stack stack;
 
 	stack.push(4);
 	stack.push(2);

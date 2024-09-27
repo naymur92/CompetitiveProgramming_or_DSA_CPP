@@ -1,2 +1,3 @@
-5 2 4 
-4 2 5 
+Top element is: 3
+Top element removed from stack is: 3
+Stack elements: 7 2 4 
