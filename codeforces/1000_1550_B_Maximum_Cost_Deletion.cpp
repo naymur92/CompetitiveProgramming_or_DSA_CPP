@@ -18,10 +18,15 @@ int main(){
 		cin >> n >> a >> b;
 		cin >> s;
 
-		// solution copied from tutorial
+		// find unique parts of string
+		int un_part = unique(s.begin(), s.end()) - s.begin();
+		cout << n * a + max(n * b, (un_part / 2 + 1) * b) << '\n';
 
-		int m = unique(s.begin(), s.end()) - s.begin();
-		cout << n * a + max(n * b, (m / 2 + 1) * b) << '\n';
+		// if (b >= 0)
+		// 	cout << n * a + n * b << "\n";
+		// else {
+		// 	cout << n * a + (un_part / 2 + 1) * b << "\n";
+		// }
 	}
 }
 
