@@ -28,28 +28,26 @@ int performOperation(int op1, int op2, char oper) {
 }
 
 
-int evaluatePostfix(stringstream &exp) {
+int evaluatePrefix(vector<string> &parts) {
 	stack<int> nums;
 
-	string token;
-
     // Tokenize the input
-    while (exp >> token) {
-        // Check if the token is a number
-        if (isNumber(token))
-        	nums.push(stoi(token));
-        else if (isOperator(token)) {
-        	if (nums.size() < 2) {
+    for (int i = parts.size() - 1; i >= 0; --i) {
+        // Check if the item is a number
+        if (isNumber(parts[i]))
+            nums.push(stoi(parts[i]));
+        else if (isOperator(parts[i])) {
+            if (nums.size() < 2) {
                 cerr << "Error: Invalid expression" << endl;
                 return 0;
             }
-        	int op2 = nums.top();
-        	nums.pop();
-        	int op1 = nums.top();
-        	nums.pop();
+            int op1 = nums.top();
+            nums.pop();
+            int op2 = nums.top();
+            nums.pop();
 
-        	int res = performOperation(op1, op2, token[0]);
-        	nums.push(res);
+            int res = performOperation(op1, op2, parts[i][0]);
+            nums.push(res);
         }
     }
 
@@ -67,11 +65,17 @@ int main() {
 
 	stringstream ss(exp);
 
-	cout << "Result: " << evaluatePostfix(ss) << endl;
+    string token;
+    vector<string> parts;
+    while (ss >> token) {
+        parts.push_back(token);
+    }
+
+	cout << "Result: " << evaluatePrefix(parts) << endl;
 }
 
 /*
-2 3 * 5 4 * + 9 -
+- + * 2 3 * 5 4 9
 */
 
 /*
