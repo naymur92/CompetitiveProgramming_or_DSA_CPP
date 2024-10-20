@@ -10,11 +10,11 @@ int main() {
     int t;
     cin >> t;
     while(t--) {
-        int n, k;
+        long long n, k;
 
         cin >> n >> k;
 
-        vector<int> a(n);
+        vector<long long> a(n);
         for (auto &a_i: a) cin >> a_i;
 
         sort(a.begin(), a.end());
@@ -22,13 +22,13 @@ int main() {
         int press = 0;
         int loop_c = 0;
 
-        int i = 0;
+        long long i = 0;
         while (i < n && k > 0) {
             if (a[i] - loop_c > 0) {
-                press += min(k, (n - i) * a[i]);
-                k -= min(k, (n - i) * a[i]);
+                press += min(k, (n - i) * (a[i] - loop_c));
+                k -= min(k, (n - i) * (a[i] - loop_c));
 
-                loop_c += a[i];
+                loop_c += (a[i] - loop_c);
             } else {
                 press++;
                 i++;
