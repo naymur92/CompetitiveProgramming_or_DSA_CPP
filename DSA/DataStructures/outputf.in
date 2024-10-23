@@ -1,15 +1,9 @@
-2 enqueued to the queue.
-3 enqueued to the queue.
-5 enqueued to the queue.
-4 enqueued to the queue.
-6 enqueued to the queue.
-Top element is: 2
-Queue elements: 2 3 5 4 6 
-2 dequeued from the queue.
-3 dequeued from the queue.
-5 dequeued from the queue.
-Queue elements: 4 6 
-2 enqueued to the queue.
-3 enqueued to the queue.
-5 enqueued to the queue.
-Queue elements: 4 6 2 3 5 
+8 10 12 15 17 20 25 
+15 10 8 12 20 17 25 
+8 12 10 17 25 20 15 
+Min: 8
+Max: 25
+Height: 2
+Number: 10 is found.
+Number: 5 is not found.
+8 12 15 17 20 25 
