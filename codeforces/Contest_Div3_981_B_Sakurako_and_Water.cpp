@@ -24,6 +24,7 @@ int main() {
 
         int steps = 0;
 
+        /*first solution*/
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
                 if (a[i][j] < 0) {
@@ -38,13 +39,25 @@ int main() {
             }
         }
 
-        // for (int i = 0; i < n; ++i) {
-        //     for (int j = 0; j < n; ++j) {
-        //         cout << a[i][j] << " ";
-        //     }
-        //     cout << "\n";
-        // }
-        // cout << "\n";
+        /*another solution*/
+        /*for (int i = 0; i < n; ++i) {
+            int x = 0, y = 0;
+            
+            for (int l = 0; l < n - i; ++l) {
+                x = min(x, a[i + l][l]);
+            }
+            if (x < 0)
+                steps += abs(x);
+
+            if (i > 0) {
+                for (int l = 0; l < n - i; ++l) {
+                    y = min(y, a[l][i + l]);
+                }
+                if (y < 0)
+                    steps += abs(y);
+            }
+        }*/
+
 
         cout << steps << "\n";
     }
