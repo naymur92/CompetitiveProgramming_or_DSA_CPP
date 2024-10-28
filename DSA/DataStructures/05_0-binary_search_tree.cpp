@@ -50,11 +50,24 @@ private:
 		return max(getHeight(root->left), getHeight(root->right)) + 1;
 	}
 
-	BstNode* findMin(BstNode* root) {
-		while (root->left != nullptr)
-			root = root->left;
+	// BstNode* findMin(BstNode* root) {
+	// 	while (root->left != nullptr)
+	// 		root = root->left;
 
-		return root;
+	// 	return root;
+	// }
+
+	// recursive approach
+	BstNode* findMin(BstNode* root) {
+		if (root->left == nullptr) return root;
+
+		return findMin(root->left);
+	}
+
+	BstNode* findMax(BstNode* root) {
+		if (root->right == nullptr) return root;
+
+		return findMax(root->right);
 	}
 
 	BstNode* remove(BstNode* root, int data) {
@@ -150,9 +163,8 @@ public:
             cout << "Tree is empty.\n";
             return -1;
         }
-        BstNode* current = root;
-        while (current->right != nullptr) current = current->right;
-        return current->data;
+        
+        return findMax(root)->data;
     }
 
     // get tree height
