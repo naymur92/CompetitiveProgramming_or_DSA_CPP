@@ -10,11 +10,10 @@ bool cmp(int &a, int &b) {
     return a > b;
 }
 
-int main(){
+int main() {
     int t;
     cin >> t;
-    while(t--)
-    {
+    while (t--) {
         int n, k;
         cin >> n >> k;
 

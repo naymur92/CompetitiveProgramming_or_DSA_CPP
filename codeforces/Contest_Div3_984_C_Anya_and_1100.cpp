@@ -6,18 +6,27 @@ https://codeforces.com/contest/2036/problem/C
 
 using namespace std;
 
-int main(){
+bool match_str(string &s, int pos) {
+    if (pos < 0 || pos >= s.size() - 3)
+        return false;
+
+    return s[pos] == '1' && s[pos + 1] == '1' && s[pos + 2] == '0' && s[pos + 3] == '0';
+}
+
+int main() {
     int t;
     cin >> t;
-    while(t--)
-    {
+    while (t--) {
         string s;
         int q;
         cin >> s >> q;
 
-        int s_size = s.size();
+        int matching_c = 0;
+        int n = s.size();
 
-        int str_f = s.find("1100");
+        for (int i = 0; i < n - 3; ++i)
+            if (match_str(s, i))
+                matching_c++;
 
         while (q--) {
             int ind;
@@ -25,20 +34,17 @@ int main(){
             cin >> ind >> v;
             ind--;
 
-            if (s_size < 4)
-                cout << "NO\n";
-            else {
-                s[ind] = v;
-                if (str_f != -1 && (ind < str_f || ind > str_f + 3))
-                    cout << "YES\n";
-                else {
-                    str_f = s.find("1100");
-                    if (str_f != -1)
-                        cout << "YES\n";
-                    else
-                        cout << "NO\n";
-                }
+            for (int i = ind - 3; i <= ind; ++i) {
+                if (match_str(s, i))
+                    matching_c--;
             }
+            s[ind] = v;
+            for (int i = ind - 3; i <= ind; ++i) {
+                if (match_str(s, i))
+                    matching_c++;
+            }
+
+            cout << (matching_c ? "YES\n" : "NO\n");
         }
 
 
