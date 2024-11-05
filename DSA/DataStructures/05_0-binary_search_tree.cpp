@@ -50,12 +50,13 @@ private:
 		return max(getHeight(root->left), getHeight(root->right)) + 1;
 	}
 
-	// BstNode* findMin(BstNode* root) {
-	// 	while (root->left != nullptr)
-	// 		root = root->left;
+	// iterative approach
+	/*BstNode* findMin(BstNode* root) {
+		while (root->left != nullptr)
+			root = root->left;
 
-	// 	return root;
-	// }
+		return root;
+	}*/
 
 	// recursive approach
 	BstNode* findMin(BstNode* root) {
@@ -71,6 +72,11 @@ private:
 	}
 
 	BstNode* remove(BstNode* root, int data) {
+		/*
+		Case 1: No child
+		Case 2: One child
+		Case 3: 2 child
+		*/
 		if (root == nullptr) return root;
 
 		if (data < root->data)
@@ -78,18 +84,23 @@ private:
 		else if (data > root->data)
 			root->right = remove(root->right, data);
 		else {
+			// Case 1
 			if (root->left == nullptr && root->right == nullptr) {
 				delete root;
-				return nullptr;
-			} else if (root->left == nullptr) {
-				auto temp = root->right;
-				delete root;
-				return temp;
+				root = nullptr;
+			}
+			// Case 2
+			else if (root->left == nullptr) {
+				auto temp = root;
+				root = root->right;
+				delete temp;
 			} else if (root->right == nullptr) {
-				auto temp = root->left;
-				delete root;
-				return temp;
-			} else {
+				auto temp = root;
+				root = root->left;
+				delete temp;
+			}
+			// Case 3
+			else {
 				auto temp = findMin(root->right);
 				root->data = temp->data;
 				root->right = remove(root->right, temp->data);
@@ -99,7 +110,8 @@ private:
 		return root;
 	}
 
-	// traversal
+	// traversal of BST
+	// Depth-first search
 	void inOrderTraversal(BstNode* root) {
 		if (root == nullptr) return;
 		inOrderTraversal(root->left);
@@ -119,6 +131,73 @@ private:
 		postOrderTraversal(root->left);
 		postOrderTraversal(root->right);
 		cout << root->data << " ";
+	}
+
+	// Breadth-first search
+	void levelOrder(BstNode* root) {
+		if (root == nullptr) return;
+
+		queue<BstNode*> Q;
+		Q.push(root);
+
+		while (!Q.empty()) {
+			auto current = Q.front();
+			cout << current->data << " ";
+
+			if (current->left != nullptr)
+				Q.push(current->left);
+
+			if (current->right != nullptr)
+				Q.push(current->right);
+
+			Q.pop();
+		}
+	}
+
+	// checking the Tree is BST or not?
+	/*bool isSubtreeLesser(BstNode* root, int value) {
+		if (root == nullptr) return true;
+
+		if (root->data <= value
+			&& isSubtreeLesser(root->left, value)
+			&& isSubtreeLesser(root->right, value))
+			return true;
+		else
+			return false;
+	}
+
+	bool isSubtreeGreater(BstNode* root, int value) {
+		if (root == nullptr) return true;
+
+		if (root->data > value
+			&& isSubtreeGreater(root->left, value)
+			&& isSubtreeGreater(root->right, value))
+			return true;
+		else
+			return false;
+	}
+
+	bool isBinarySearchTree(BstNode* root) {
+		if (root == nullptr) return true;
+
+		if (isSubtreeLesser(root->left, root->data)
+			&& isSubtreeGreater(root->right, root->data)
+			&& isBinarySearchTree(root->left)
+			&& isBinarySearchTree(root->right))
+			return true;
+		return false;
+	}*/
+
+	// another approach
+	bool isBinarySearchTree(BstNode* root, int minValue, int maxValue) {
+		if (root == nullptr) return true;
+
+		if (root->data > minValue
+			&& root->data <= maxValue
+			&& isBinarySearchTree(root->left, minValue, root->data)
+			&& isBinarySearchTree(root->right, root->data, maxValue))
+			return true;
+		return false;
 	}
 
 
@@ -172,7 +251,8 @@ public:
     	return getHeight(root);
     }
 
-    // traversal
+    // traversal of BST
+    // Depth-first search
     void inOrderTraversal() {
         inOrderTraversal(root);
         cout << "\n";
@@ -186,6 +266,17 @@ public:
     void postOrderTraversal() {
         postOrderTraversal(root);
         cout << "\n";
+    }
+
+    // Breadth-first search
+    void levelOrder() {
+    	levelOrder(root);
+    	cout << "\n";
+    }
+
+    // checking the Tree is BST or not?
+    bool isBinarySearchTree() {
+    	return isBinarySearchTree(root, INT_MIN, INT_MAX);
     }
 
 };
@@ -202,9 +293,10 @@ int main() {
 	bst.insert(12);
 	bst.insert(8);
 
-	bst.inOrderTraversal();    // 8 10 12 15 17 20 25 
-    bst.preOrderTraversal();   // 15 10 8 12 20 17 25 
-    bst.postOrderTraversal();  // 8 12 10 17 25 20 15 
+	bst.inOrderTraversal();		// 8 10 12 15 17 20 25 
+    bst.preOrderTraversal();	// 15 10 8 12 20 17 25 
+    bst.postOrderTraversal();	// 8 12 10 17 25 20 15 
+    bst.levelOrder();			// 15 10 20 8 12 17 25 
 
     cout << "Min: " << bst.findMin() << endl;
     cout << "Max: " << bst.findMax() << endl;
@@ -215,4 +307,7 @@ int main() {
 
     bst.remove(10);
     bst.inOrderTraversal();
+
+    // checking the Tree is BST or not?
+    cout << "The tree is " << (bst.isBinarySearchTree() ? "" : "not ") << "a BST.\n";
 }
