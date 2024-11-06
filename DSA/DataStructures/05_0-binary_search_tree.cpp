@@ -29,7 +29,12 @@ private:
 	BstNode* insert(BstNode* root, int data) {
 		if (root == nullptr) {
 			root = new BstNode(data);
-		} else if (data <= root->data) {
+		}
+		// for no duplicates
+		// else if (root->data == data) {
+		// 	return root;
+		// }
+		else if (data <= root->data) {	// < for no duplicates
 			root->left = insert(root->left, data);
 		} else {
 			root->right = insert(root->right, data);
@@ -191,13 +196,13 @@ private:
 	}
 
 	// check BST using inorder traversal
-	bool checkBstInOrder(BstNode* root, int minValue) {
+	bool checkBstInOrder(BstNode* root, int &minValue) {
 		if (root == nullptr) return true;
 
 		if (!checkBstInOrder(root->left, minValue))
 			return false;
 
-		if (root->data < minValue)
+		if (root->data < minValue)	// <= for no duplicates
 			return false;
 
 		minValue = root->data;
@@ -287,7 +292,8 @@ public:
 
     // checking using inorder traversal
     bool isBST() {
-    	return checkBstInOrder(root, INT_MIN);
+    	int value = INT_MIN;
+    	return checkBstInOrder(root, value);
     }
 
 };
@@ -302,11 +308,7 @@ int main() {
 	bst.insert(25);
 	bst.insert(17);
 	bst.insert(12);
-	bst.insert(12);
 	bst.insert(8);
-	bst.insert(8);
-	bst.insert(13);
-	bst.insert(9);
 
 	bst.inOrderTraversal();		// 8 10 12 15 17 20 25 
     bst.preOrderTraversal();	// 15 10 8 12 20 17 25 
