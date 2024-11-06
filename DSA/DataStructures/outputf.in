@@ -1,11 +1,19 @@
-8 10 12 15 17 20 25 
-15 10 8 12 20 17 25 
-8 12 10 17 25 20 15 
-15 10 20 8 12 17 25 
+8 8 9 10 12 12 13 15 17 20 25 
+15 10 8 8 9 12 12 13 20 17 25 
+8 9 8 12 13 12 10 17 25 20 15 
+15 10 20 8 12 17 25 8 9 12 13 
+
 Min: 8
 Max: 25
-Height: 2
+Height: 3
+
+The tree is a BST.
+The tree is a BST.
+
 Number: 10 is found.
 Number: 5 is not found.
-8 12 15 17 20 25 
+
+8 8 9 12 12 13 15 17 20 25 
+
+The tree is a BST.
 The tree is a BST.

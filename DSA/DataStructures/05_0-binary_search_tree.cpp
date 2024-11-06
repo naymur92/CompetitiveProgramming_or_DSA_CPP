@@ -101,9 +101,9 @@ private:
 			}
 			// Case 3
 			else {
-				auto temp = findMin(root->right);
+				auto temp = findMax(root->left);
 				root->data = temp->data;
-				root->right = remove(root->right, temp->data);
+				root->left = remove(root->left, temp->data);
 			}
 		}
 
@@ -158,46 +158,51 @@ private:
 	/*bool isSubtreeLesser(BstNode* root, int value) {
 		if (root == nullptr) return true;
 
-		if (root->data <= value
+		return (root->data <= value 	// < for no duplicates
 			&& isSubtreeLesser(root->left, value)
-			&& isSubtreeLesser(root->right, value))
-			return true;
-		else
-			return false;
+			&& isSubtreeLesser(root->right, value));
 	}
 
 	bool isSubtreeGreater(BstNode* root, int value) {
 		if (root == nullptr) return true;
 
-		if (root->data > value
+		return (root->data > value
 			&& isSubtreeGreater(root->left, value)
-			&& isSubtreeGreater(root->right, value))
-			return true;
-		else
-			return false;
+			&& isSubtreeGreater(root->right, value));
 	}
 
 	bool isBinarySearchTree(BstNode* root) {
 		if (root == nullptr) return true;
 
-		if (isSubtreeLesser(root->left, root->data)
+		return (isSubtreeLesser(root->left, root->data)
 			&& isSubtreeGreater(root->right, root->data)
 			&& isBinarySearchTree(root->left)
-			&& isBinarySearchTree(root->right))
-			return true;
-		return false;
+			&& isBinarySearchTree(root->right));
 	}*/
 
 	// another approach
 	bool isBinarySearchTree(BstNode* root, int minValue, int maxValue) {
 		if (root == nullptr) return true;
 
-		if (root->data > minValue
-			&& root->data <= maxValue
+		return (root->data > minValue
+			&& root->data <= maxValue	// < for no duplicates
 			&& isBinarySearchTree(root->left, minValue, root->data)
-			&& isBinarySearchTree(root->right, root->data, maxValue))
-			return true;
-		return false;
+			&& isBinarySearchTree(root->right, root->data, maxValue));
+	}
+
+	// check BST using inorder traversal
+	bool checkBstInOrder(BstNode* root, int minValue) {
+		if (root == nullptr) return true;
+
+		if (!checkBstInOrder(root->left, minValue))
+			return false;
+
+		if (root->data < minValue)
+			return false;
+
+		minValue = root->data;
+
+		return checkBstInOrder(root->right, minValue);
 	}
 
 
@@ -276,7 +281,13 @@ public:
 
     // checking the Tree is BST or not?
     bool isBinarySearchTree() {
+    	// return isBinarySearchTree(root);
     	return isBinarySearchTree(root, INT_MIN, INT_MAX);
+    }
+
+    // checking using inorder traversal
+    bool isBST() {
+    	return checkBstInOrder(root, INT_MIN);
     }
 
 };
@@ -291,23 +302,42 @@ int main() {
 	bst.insert(25);
 	bst.insert(17);
 	bst.insert(12);
+	bst.insert(12);
 	bst.insert(8);
+	bst.insert(8);
+	bst.insert(13);
+	bst.insert(9);
 
 	bst.inOrderTraversal();		// 8 10 12 15 17 20 25 
     bst.preOrderTraversal();	// 15 10 8 12 20 17 25 
     bst.postOrderTraversal();	// 8 12 10 17 25 20 15 
     bst.levelOrder();			// 15 10 20 8 12 17 25 
 
+    cout << "\n";
+
     cout << "Min: " << bst.findMin() << endl;
     cout << "Max: " << bst.findMax() << endl;
     cout << "Height: " << bst.getHeight() << endl;
 
+    cout << "\n";
+
+    // checking the Tree is BST or not?
+    cout << "The tree is " << (bst.isBinarySearchTree() ? "" : "not ") << "a BST.\n";
+    cout << "The tree is " << (bst.isBST() ? "" : "not ") << "a BST.\n";
+
+    cout << "\n";
+
     bst.search(10);
     bst.search(5);
+
+    cout << "\n";
 
     bst.remove(10);
     bst.inOrderTraversal();
 
+    cout << "\n";
+
     // checking the Tree is BST or not?
     cout << "The tree is " << (bst.isBinarySearchTree() ? "" : "not ") << "a BST.\n";
+    cout << "The tree is " << (bst.isBST() ? "" : "not ") << "a BST.\n";
 }
