@@ -43,9 +43,9 @@ private:
 		return root;
 	}
 
-	bool search(BstNode* root, int data) {
-		if (root == nullptr) return false;
-		else if (root->data == data) return true;
+	BstNode* search(BstNode* root, int data) {
+		if (root == nullptr) return nullptr;
+		else if (root->data == data) return root;
 		else if (data < root->data) return search(root->left, data);
 		else return search(root->right, data);
 	}
@@ -210,6 +210,30 @@ private:
 		return checkBstInOrder(root->right, minValue);
 	}
 
+	// get successor
+	BstNode* getSuccessor(BstNode* root, int data) {
+		auto current = search(root, data);
+
+		if (current == nullptr) return nullptr;
+
+		if (current->right != nullptr)
+			return findMin(current->right);
+		else {
+			auto ancestor = root;
+			BstNode* successor = nullptr;
+
+			while (ancestor != current) {
+				if (current->data <= ancestor->data) {
+					successor = ancestor;
+					ancestor = ancestor->left;
+				} else
+					ancestor = ancestor->right;
+			}
+
+			return successor;
+		}
+	}
+
 
 public:
 	// constructor
@@ -227,9 +251,14 @@ public:
 
 	// searching
 	void search(int data) {
-		bool is_found = search(root, data);
+		auto current = search(root, data);
 
-		cout << "Number: " << data << " is" << (!is_found ? " not" : "") << " found.\n";
+		if (current == nullptr) {
+			cout << "Number: " << data << " is not found.\n";
+			return;
+		}
+
+		cout << "Number: " << data << " is found.\n";
 	}
 
 	// removing
@@ -296,6 +325,16 @@ public:
     	return checkBstInOrder(root, value);
     }
 
+
+    int getSuccessor(int data) {
+    	if (root == nullptr) {
+    		cout << "There is no successor of " << data << "\n";
+    		return findMin();
+    	}
+
+    	return getSuccessor(root, data)->data;
+    }
+
 };
 
 
@@ -342,4 +381,20 @@ int main() {
     // checking the Tree is BST or not?
     cout << "The tree is " << (bst.isBinarySearchTree() ? "" : "not ") << "a BST.\n";
     cout << "The tree is " << (bst.isBST() ? "" : "not ") << "a BST.\n";
+
+    cout << "\n";
+
+    int minimum = bst.findMin();
+    // int succ = bst.getSuccessor(12);
+    // if (succ != minimum)
+    // 	cout << "Successor of 12 is " << succ << "\n";
+    // succ = bst.getSuccessor(17);
+    // if (succ != minimum)
+    // 	cout << "Successor of 17 is " << succ << "\n";
+    // succ = bst.getSuccessor(20);
+    // if (succ != minimum)
+    // 	cout << "Successor of 20 is " << succ << "\n";
+    int succ = bst.getSuccessor(25);
+    if (succ != minimum)
+    	cout << "Successor of 25 is " << succ << "\n";
 }
