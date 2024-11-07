@@ -218,20 +218,19 @@ private:
 
 		if (current->right != nullptr)
 			return findMin(current->right);
-		else {
-			auto ancestor = root;
-			BstNode* successor = nullptr;
+		
+		auto ancestor = root;
+		BstNode* successor = nullptr;
 
-			while (ancestor != current) {
-				if (current->data <= ancestor->data) {
-					successor = ancestor;
-					ancestor = ancestor->left;
-				} else
-					ancestor = ancestor->right;
-			}
-
-			return successor;
+		while (ancestor != current) {
+			if (data <= ancestor->data) {
+				successor = ancestor;
+				ancestor = ancestor->left;
+			} else
+				ancestor = ancestor->right;
 		}
+
+		return successor;
 	}
 
 
@@ -327,12 +326,14 @@ public:
 
 
     int getSuccessor(int data) {
-    	if (root == nullptr) {
+    	auto successor = getSuccessor(root, data);
+
+    	if (successor == nullptr) {
     		cout << "There is no successor of " << data << "\n";
-    		return findMin();
+    		return -1;
     	}
 
-    	return getSuccessor(root, data)->data;
+    	return successor->data;
     }
 
 };
@@ -384,17 +385,16 @@ int main() {
 
     cout << "\n";
 
-    int minimum = bst.findMin();
-    // int succ = bst.getSuccessor(12);
-    // if (succ != minimum)
-    // 	cout << "Successor of 12 is " << succ << "\n";
-    // succ = bst.getSuccessor(17);
-    // if (succ != minimum)
-    // 	cout << "Successor of 17 is " << succ << "\n";
-    // succ = bst.getSuccessor(20);
-    // if (succ != minimum)
-    // 	cout << "Successor of 20 is " << succ << "\n";
-    int succ = bst.getSuccessor(25);
-    if (succ != minimum)
+    int succ = bst.getSuccessor(12);
+    if (succ != -1)
+    	cout << "Successor of 12 is " << succ << "\n";
+    succ = bst.getSuccessor(17);
+    if (succ != -1)
+    	cout << "Successor of 17 is " << succ << "\n";
+    succ = bst.getSuccessor(20);
+    if (succ != -1)
+    	cout << "Successor of 20 is " << succ << "\n";
+    succ = bst.getSuccessor(25);
+    if (succ != -1)
     	cout << "Successor of 25 is " << succ << "\n";
 }

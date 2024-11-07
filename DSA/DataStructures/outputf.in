@@ -6,3 +6,19 @@
 Min: 8
 Max: 25
 Height: 2
+
+The tree is a BST.
+The tree is a BST.
+
+Number: 10 is found.
+Number: 5 is not found.
+
+8 12 15 17 20 25 
+
+The tree is a BST.
+The tree is a BST.
+
+Successor of 12 is 15
+Successor of 17 is 20
+Successor of 20 is 25
+There is no successor of 25
