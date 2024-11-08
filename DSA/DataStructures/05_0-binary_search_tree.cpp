@@ -219,18 +219,43 @@ private:
 		if (current->right != nullptr)
 			return findMin(current->right);
 		
-		auto ancestor = root;
+		auto temp = root;
 		BstNode* successor = nullptr;
 
-		while (ancestor != current) {
-			if (data <= ancestor->data) {
-				successor = ancestor;
-				ancestor = ancestor->left;
+		while (temp != current) {
+			if (data <= temp->data) {
+				successor = temp;
+				temp = temp->left;
 			} else
-				ancestor = ancestor->right;
+				temp = temp->right;
 		}
 
 		return successor;
+	}
+
+
+	// get predecessor
+	BstNode* getPredecessor(BstNode* root, int data) {
+		auto current = search(root, data);
+
+		if (current == nullptr) return nullptr;
+
+		if (current->left != nullptr)
+			return findMax(current->left);
+		
+		auto temp = root;
+		BstNode* predecessor = nullptr;
+
+		while (temp != current) {
+			if (data <= temp->data)
+				temp = temp->left;
+			else {
+				predecessor = temp;
+				temp = temp->right;
+			}
+		}
+
+		return predecessor;
 	}
 
 
@@ -336,6 +361,17 @@ public:
     	return successor->data;
     }
 
+    int getPredecessor(int data) {
+    	auto predecessor = getPredecessor(root, data);
+
+    	if (predecessor == nullptr) {
+    		cout << "There is no predecessor of " << data << "\n";
+    		return -1;
+    	}
+
+    	return predecessor->data;
+    }
+
 };
 
 
@@ -374,10 +410,10 @@ int main() {
 
     cout << "\n";
 
-    bst.remove(10);
-    bst.inOrderTraversal();
+    // bst.remove(10);
+    // bst.inOrderTraversal();
 
-    cout << "\n";
+    // cout << "\n";
 
     // checking the Tree is BST or not?
     cout << "The tree is " << (bst.isBinarySearchTree() ? "" : "not ") << "a BST.\n";
@@ -397,4 +433,21 @@ int main() {
     succ = bst.getSuccessor(25);
     if (succ != -1)
     	cout << "Successor of 25 is " << succ << "\n";
+
+
+    cout << "\n";
+
+
+    int pred = bst.getPredecessor(12);
+    if (pred != -1)
+    	cout << "Predecessor of 12 is " << pred << "\n";
+    pred = bst.getPredecessor(17);
+    if (pred != -1)
+    	cout << "Predecessor of 17 is " << pred << "\n";
+    pred = bst.getPredecessor(8);
+    if (pred != -1)
+    	cout << "Predecessor of 8 is " << pred << "\n";
+    pred = bst.getPredecessor(25);
+    if (pred != -1)
+    	cout << "Predecessor of 25 is " << pred << "\n";
 }
