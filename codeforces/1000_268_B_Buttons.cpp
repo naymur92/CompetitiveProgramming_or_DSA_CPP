@@ -1,5 +1,5 @@
 /*
-https://codeforces.com/problemset/problem/766/B
+https://codeforces.com/problemset/problem/268/B
 */
 
 #include <bits/stdc++.h>
