@@ -13,6 +13,9 @@ int binExpRec(int a, int b)
 	else return (1LL * res * res) % M;
 }
 
+// a^9 = a^(1001) = a^8 * a => a->a^2->a^4->a^8->a^16
+
+// a <= 10^9, b <= 10^9, M <= 10^9
 int binExpIter(int a, int b)
 {
 	int ans = 1;
