@@ -14,48 +14,30 @@ int main() {
 		string s, t;
 		cin >> s >> t;
 
-		vector<int> chars_t(27, 0);
-		for (int i = 0; i < t.size(); ++i)
+		int s_s = s.size(), s_t = t.size();
+		int max_match = 0;
+		for (int i = 0; i < s_s; ++i)
 		{
-			chars_t[t[i] - 'a']++;
-		}
+			for (int j = 0; j < s_t; ++j)
+			{
+				if (s[i] == t[j]) {
+					int indx_s = i;
+					int indx_t = j;
+					int match = 0;
+					while (indx_s < s_s and indx_t < s_t) {
+						if (s[indx_s] == t[indx_t]) {
+							match++;
+							indx_s++, indx_t++;
+						} else {
+							indx_s++;
+						}
+					}
 
-		int extra = 0;
-		/*for (int i = 0; i < s.size(); ++i)
-		{
-			if (chars_t[s[i]] == 0) extra++;
-			else {
-				for (int j = 0; j < t.size(); ++j)
-				{
-					while (s[i] != )
-					if (s[i] == t[j])
+					max_match = max(max_match, match);
 				}
 			}
-		}*/
-		int i = 0, j = 0;
-		while (i < s.size())
-		{
-			if (chars_t[s[i]]) {
-				while (s[i] != t[j]) {
-					extra++;
-					j++;
-				}
-
-				while (i < s.size() and j < t.size() and s[i] == t[j]) {
-					i++, j++;
-				}
-			} else {
-				i++;
-			}
-
-			// while (i < s.size() and j < t.size() and s[i] != t[j]) {
-			// 	extra++;
-			// 	j++;
-			// }
-
-			
 		}
-		cout << s.size() + extra << "\n";
+		cout << (s_s + s_t - max_match) << "\n";
 	}
 }
 
