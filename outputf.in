@@ -1,1 +1,200 @@
-955300529
+Num: 1
+Divisors: 1 
+Sum: 1
+
+Num: 2
+Divisors: 1 2 
+Sum: 3
+
+Num: 3
+Divisors: 1 3 
+Sum: 4
+
+Num: 4
+Divisors: 1 2 4 
+Sum: 7
+
+Num: 5
+Divisors: 1 5 
+Sum: 6
+
+Num: 6
+Divisors: 1 2 3 6 
+Sum: 12
+
+Num: 7
+Divisors: 1 7 
+Sum: 8
+
+Num: 8
+Divisors: 1 2 4 8 
+Sum: 15
+
+Num: 9
+Divisors: 1 3 9 
+Sum: 13
+
+Num: 10
+Divisors: 1 2 5 10 
+Sum: 18
+
+Num: 11
+Divisors: 1 11 
+Sum: 12
+
+Num: 12
+Divisors: 1 2 3 4 6 12 
+Sum: 28
+
+Num: 13
+Divisors: 1 13 
+Sum: 14
+
+Num: 14
+Divisors: 1 2 7 14 
+Sum: 24
+
+Num: 15
+Divisors: 1 3 5 15 
+Sum: 24
+
+Num: 16
+Divisors: 1 2 4 8 16 
+Sum: 31
+
+Num: 17
+Divisors: 1 17 
+Sum: 18
+
+Num: 18
+Divisors: 1 2 3 6 9 18 
+Sum: 39
+
+Num: 19
+Divisors: 1 19 
+Sum: 20
+
+Num: 20
+Divisors: 1 2 4 5 10 20 
+Sum: 42
+
+Num: 21
+Divisors: 1 3 7 21 
+Sum: 32
+
+Num: 22
+Divisors: 1 2 11 22 
+Sum: 36
+
+Num: 23
+Divisors: 1 23 
+Sum: 24
+
+Num: 24
+Divisors: 1 2 3 4 6 8 12 24 
+Sum: 60
+
+Num: 25
+Divisors: 1 5 25 
+Sum: 31
+
+Num: 26
+Divisors: 1 2 13 26 
+Sum: 42
+
+Num: 27
+Divisors: 1 3 9 27 
+Sum: 40
+
+Num: 28
+Divisors: 1 2 4 7 14 28 
+Sum: 56
+
+Num: 29
+Divisors: 1 29 
+Sum: 30
+
+Num: 30
+Divisors: 1 2 3 5 6 10 15 30 
+Sum: 72
+
+Num: 31
+Divisors: 1 31 
+Sum: 32
+
+Num: 32
+Divisors: 1 2 4 8 16 32 
+Sum: 63
+
+Num: 33
+Divisors: 1 3 11 33 
+Sum: 48
+
+Num: 34
+Divisors: 1 2 17 34 
+Sum: 54
+
+Num: 35
+Divisors: 1 5 7 35 
+Sum: 48
+
+Num: 36
+Divisors: 1 2 3 4 6 9 12 18 36 
+Sum: 91
+
+Num: 37
+Divisors: 1 37 
+Sum: 38
+
+Num: 38
+Divisors: 1 2 19 38 
+Sum: 60
+
+Num: 39
+Divisors: 1 3 13 39 
+Sum: 56
+
+Num: 40
+Divisors: 1 2 4 5 8 10 20 40 
+Sum: 90
+
+Num: 41
+Divisors: 1 41 
+Sum: 42
+
+Num: 42
+Divisors: 1 2 3 6 7 14 21 42 
+Sum: 96
+
+Num: 43
+Divisors: 1 43 
+Sum: 44
+
+Num: 44
+Divisors: 1 2 4 11 22 44 
+Sum: 84
+
+Num: 45
+Divisors: 1 3 5 9 15 45 
+Sum: 78
+
+Num: 46
+Divisors: 1 2 23 46 
+Sum: 72
+
+Num: 47
+Divisors: 1 47 
+Sum: 48
+
+Num: 48
+Divisors: 1 2 3 4 6 8 12 16 24 48 
+Sum: 124
+
+Num: 49
+Divisors: 1 7 49 
+Sum: 57
+
+Num: 50
+Divisors: 1 2 5 10 25 50 
+Sum: 93
+
