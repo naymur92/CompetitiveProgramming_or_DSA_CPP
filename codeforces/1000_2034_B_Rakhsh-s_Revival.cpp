@@ -21,13 +21,15 @@ int main() {
 			if (s[i] == '1') continue;
 
 			int j = i;
-			while (j < n and s[j] == '0') j++;
+			while (j < n and j < i + m - 1 and s[j] == '0') j++;
 
-			ans += (j - i);
+			if (j < n and s[j] == '0') {
+				ans++;
+				j += k;
+			}
 
-			cout << j << " ";
+			i = max(j - 1, i);
 		}
-		cout << "\n";
 		cout << ans << "\n";
 	}
 }
