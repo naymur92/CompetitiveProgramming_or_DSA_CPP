@@ -1,3 +1,7 @@
+/*
+https://www.hackerearth.com/practice/math/number-theory/basic-number-theory-1/practice-problems/algorithm/name-count/
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -17,22 +21,7 @@ int binExp(int a, int b, int m) {
 	return ans;
 }
 
-/*
-Multiplicative Inverse (MI)
-Modular Multiplicative Inverse (MMI)
-*/
-
-/*
-There are n children and k toffees. k < n
-count the number of ways to distribute toffee among
-n children such that each children get 1 toffee only.
-nCk % M, M = 1e9 + 7
-n < 10^6, k < 10^6
-Q < 10^5
-n! / ((n - r)! * r!)
-*/
-
-const int N = 1e6 + 10;
+const int N = 1e5 + 10;
 int fact[N];
 
 int main() {
@@ -41,16 +30,30 @@ int main() {
 		fact[i] = (fact[i - 1] * 1LL * i) % M;
 	}
 
-	int q;
-	cin >> q;
-	while (q--) {
+
+	int t;
+	cin >> t;
+
+	while (t--) {
 		int n, k;
 		cin >> n >> k;
 
-		int ans = fact[n];
-		int den = (fact[n - k] * 1LL * fact[k]) % M;
+		int ans = (fact[n] * 1LL * fact[k]) % M;
+
+		int den = (fact[n]  * 1LL * fact[k - n]) % M;
+
 		ans = (ans * 1LL * binExp(den, M - 2, M)) % M;
 
 		cout << ans << "\n";
 	}
 }
+
+/*
+1
+3 3
+*/
+
+
+/*
+6
+*/

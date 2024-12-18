@@ -5,8 +5,7 @@ const int N = 1e7 + 10;
 vector<bool> isPrime(N, 1);
 vector<int> lp(N, 0), hp(N, 0);
 
-int main()
-{	
+int main() {	
 	isPrime[0] = isPrime[1] = false;
 
 	for (int i = 2; i < N; ++i) {

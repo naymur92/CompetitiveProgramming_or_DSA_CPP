@@ -5,8 +5,7 @@ const int N = 1e5 + 10;
 vector<int> divisors[N];
 vector<long long> sum(N, 1);
 
-int main()
-{	
+int main() {	
 	for (int i = 2; i < N; ++i) {
 		for (int j = i; j < N; j += i) {
 			divisors[j].push_back(i);
