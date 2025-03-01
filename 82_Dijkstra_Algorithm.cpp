@@ -19,14 +19,14 @@ void dijkstra(int source) {
 	set<pair<int, int> > st;
 
 	// set initial value in set and dist
-	st.insert({source, 0});
+	st.insert({0, source});
 	dist[source] = 0;
 
 	while (st.size() > 0) {
 		// get the top node and distance from set
-		auto node = st.begin();
-		int v = node->first;
-		int v_dist = node->second;
+		auto node = *st.begin();
+		int v = node.second;
+		int v_dist = node.first;
 
 		st.erase(st.begin());
 		if (isVisited[v]) continue;
@@ -41,7 +41,7 @@ void dijkstra(int source) {
 			if (dist[v] + child_dist < dist[child_v]) {
 				dist[child_v] = dist[v] + child_dist;
 
-				st.insert({child_v, dist[child_v]});
+				st.insert({dist[child_v], child_v});
 			}
 		}
 	}
