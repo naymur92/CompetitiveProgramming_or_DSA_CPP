@@ -1,3 +1,6 @@
+/*
+https://codeforces.com/group/yg7WhsFsAp/contest/419146/problem/P14
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -15,7 +18,7 @@ void solve() {
 		cout << "NO" << "\n";
 		return;
 	}
-	
+
 	bool is_lucky = true;
 	while (cnt > 0) {
 		int last_digit = cnt % 10;
@@ -31,12 +34,17 @@ void solve() {
 }
 
 int main() {
-	/*int t;
-	cin >> t;
-
-	while (t--) {
-		solve();
-	}*/
-
 	solve();
 }
+
+/*
+40047
+NO
+
+
+7747774
+YES
+
+1000000000000000000
+NO
+*/
