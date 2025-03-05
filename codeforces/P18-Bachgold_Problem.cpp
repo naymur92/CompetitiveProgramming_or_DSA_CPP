@@ -1,3 +1,6 @@
+/*
+https://codeforces.com/group/yg7WhsFsAp/contest/419146/problem/P18
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -22,12 +25,18 @@ void solve() {
 }
 
 int main() {
-	/*int t;
-	cin >> t;
-
-	while (t--) {
-		solve();
-	}*/
-
 	solve();
 }
+
+/*
+5
+
+2
+2 3
+
+
+6
+
+3
+2 2 2
+*/
