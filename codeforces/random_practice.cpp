@@ -6,19 +6,23 @@ void solve() {
 	int n;
 	cin >> n;
 
-	int cnt2 = n / 2;
-	int cnt3 = n % 2;
-
-	if (cnt3) cnt2--;
-
-	cout << (cnt2 + cnt3) << "\n";
-	for (int i = 0; i < cnt2; ++i) {
-		cout << 2 << " ";
+	vector<int> h(n);
+	for (int i = 0; i < n; ++i) {
+		cin >> h[i];
 	}
-	for (int i = 0; i < cnt3; ++i) {
-		cout << 3 << " ";
+
+	int cnt = 0;
+	for (int i = 1; i < n - 1; ++i) {
+		if (h[i] > h[i - 1] && h[i] > h[i + 1]) {
+			cnt++;
+			// cout << h[i] << " ";
+
+			i += 2;
+		}
 	}
-	cout << "\n";
+	// cout << "\n";
+
+	cout << cnt << "\n";
 }
 
 int main() {
