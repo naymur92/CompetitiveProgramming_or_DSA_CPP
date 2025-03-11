@@ -6,11 +6,12 @@ void solve() {
 	int n;
 	cin >> n;
 
-	int cnt = 0;
-	for (int i = 1; i * i <= n; ++i) {
-		if (n % i == 0) cnt += 2;
+	vector<int> p(n);
+	for (int i = 0; i < n; ++i) {
+		cin >> p[i];
 	}
-	cout << cnt << "\n";
+
+	cout << min_element(p.begin(), p.end()) - p.begin();
 }
 
 int main() {
