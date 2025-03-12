@@ -6,12 +6,16 @@ void solve() {
 	int n;
 	cin >> n;
 
-	vector<int> p(n);
+	vector<int> a(n);
 	for (int i = 0; i < n; ++i) {
-		cin >> p[i];
+		cin >> a[i];
 	}
 
-	cout << min_element(p.begin(), p.end()) - p.begin();
+	sort(a.begin(), a.end());
+
+	for (int i = 0; i < n; ++i) {
+		cout << a[i] << " \n"[i == n - 1];
+	}
 }
 
 int main() {
