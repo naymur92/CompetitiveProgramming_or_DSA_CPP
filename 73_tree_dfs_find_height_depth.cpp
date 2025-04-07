@@ -13,7 +13,7 @@ void dfs(int node, int parent = 0) {
 
 		depth[child] = depth[node] + 1;
 		dfs(child, node);
-		height[node] = max(height[node], height[child]) + 1;
+		height[node] = max(height[node], height[child] + 1);
 	}
 }
 
