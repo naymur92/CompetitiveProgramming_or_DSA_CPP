@@ -1,1 +1,6 @@
 Min Heap: 5 10 15 30 20 
+Max Heap: 30 20 15 10 5 
+
+Original Array: 4 10 3 5 1 
+Sorted using MinHeap: (ASC) 1 3 4 5 10 
+Sorted using MaxHeap: (DESC) 10 5 4 3 1 
