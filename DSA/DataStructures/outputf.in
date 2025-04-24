@@ -1,6 +1,12 @@
-Min Heap: 5 10 15 30 20 
-Max Heap: 30 20 15 10 5 
-
-Original Array: 4 10 3 5 1 
-Sorted using MinHeap: (ASC) 1 3 4 5 10 
-Sorted using MaxHeap: (DESC) 10 5 4 3 1 
+Eleven
+----Hash Table----
+Index 0: Empty
+Index 1: [1 -> One]
+Index 2: Empty
+Index 3: [21 -> Twenty-One]
+Index 4: Empty
+Index 5: Empty
+Index 6: Empty
+Index 7: Empty
+Index 8: Empty
+Index 9: Empty
