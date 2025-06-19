@@ -1,12 +1,7 @@
-Eleven
-----Hash Table----
-Index 0: Empty
-Index 1: [1 -> One]
-Index 2: Empty
-Index 3: [21 -> Twenty-One]
-Index 4: Empty
-Index 5: Empty
-Index 6: Empty
-Index 7: Empty
-Index 8: Empty
-Index 9: Empty
+constructor B
+constructor A
+15
+10
+15
+destructor A
+destructor B
