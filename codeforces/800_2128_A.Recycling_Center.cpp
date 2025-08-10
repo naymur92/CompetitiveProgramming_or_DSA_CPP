@@ -14,17 +14,12 @@ void solve() {
 	for (int &ai: a) cin >> ai;
 	sort(a.rbegin(), a.rend());
 
-	int res = 0;
-	int i = 0;
-	while (i < n && a[i] > c) res++, i++;
-	while (i < n) {
-		if (a[i] > c) res++;
-		c /= 2;
-
-		// cout << a[i] << " ";
-
-		i++;
-		while (i < n && a[i] > c) res++, i++;
+	int res = n;
+	for (int i = 0; i < n; ++i) {
+		if (a[i] <= c) {
+			res--;
+			c /= 2;
+		}
 	}
 
 	cout << res << "\n";
