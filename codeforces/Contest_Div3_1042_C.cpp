@@ -11,24 +11,27 @@ void solve() {
     int n;
     ll k;
     cin >> n >> k;
-    unordered_map<ll,int> cntS, cntT;
-    cntS.reserve(n*2);
-    cntT.reserve(n*2);
+    
+    vector<int> s(n);
+    vector<int> t(n);
 
     for (int i = 0; i < n; ++i) {
         ll x; cin >> x;
         ll r = x % k;
         ll key = (r == 0 ? 0 : min(r, k - r));
-        ++cntS[key];
+        s[i] = key;
     }
     for (int i = 0; i < n; ++i) {
         ll x; cin >> x;
         ll r = x % k;
         ll key = (r == 0 ? 0 : min(r, k - r));
-        ++cntT[key];
+        t[i] = key;
     }
 
-    if (cntS == cntT) cout << "YES\n"; 
+    sort(s.begin(), s.end());
+    sort(t.begin(), t.end());
+
+    if (s == t) cout << "YES\n"; 
     else cout << "NO\n";
 }
 

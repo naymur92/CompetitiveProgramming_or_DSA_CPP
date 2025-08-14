@@ -13,21 +13,21 @@ void solve() {
     for (auto &x : a) cin >> x;
     for (auto &x : b) cin >> x;
 
+    if (a[n - 1] != b[n - 1]) {
+        cout << "NO\n";
+        return;
+    }
+
     bool ok = true;
     for (int i = 0; i < n - 1; i++) {
-        if (a[i] != b[i]) {
-            a[i] ^= a[i + 1];
-        }
-        if (a[i] != b[i]) {
-            ok = false;
-            break;
+        int x = a[i] ^ b[i];
+        if (x != 0 && x != a[i + 1] && x != b[i + 1]) {
+            cout << "NO\n";
+            return;
         }
     }
-    if (ok && a[n - 1] != b[n - 1]) ok = false;
 
-    cout << (ok ? "YES\n" : "NO\n");
-
-    // error in 2nd test case
+    cout << "YES\n";
 }
 
 int main() {
