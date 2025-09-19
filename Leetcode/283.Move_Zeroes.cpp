@@ -7,7 +7,7 @@ https://leetcode.com/problems/move-zeroes/description/?envType=study-plan-v2&env
 using namespace std;
 
 void moveZeroes(vector<int>& nums) {
-	int i = 0, j = 1;
+	/*int i = 0, j = 1;
 	int n = nums.size();
 
 	while (i < n and j < n) {
@@ -18,7 +18,16 @@ void moveZeroes(vector<int>& nums) {
 		if (i < n and j < n) {
 			swap(nums[i], nums[j]);
 		}
-	}
+	}*/
+
+	int n = nums.size();
+
+    for (int i = 0, j = 1; i < n && j < n; ++i, ++j) {
+        if (nums[i] != 0) continue;
+
+        while (j < n && nums[j] == 0) j++;
+        if (j < n ) swap(nums[i], nums[j]);
+    }
 }
 
 int main() {
